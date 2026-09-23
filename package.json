@@ -6,7 +6,7 @@
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MirKml"
+    "url": "https://github.com/MirKml/babel-plugin-syntax-current-node-compat.git"
   },
   "author": {
     "name": "Miroslav Kubelík",
