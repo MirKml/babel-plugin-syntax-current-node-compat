@@ -4,7 +4,8 @@
         "module": "NodeNext",
         "lib": ["es2024"],
         "checkJs": true,
-        "moduleResolution": "nodenext"
+        "moduleResolution": "nodenext",
+        "types": ["node"]
     },
     "typeAcquisition": {
         //"include": ["jest"]

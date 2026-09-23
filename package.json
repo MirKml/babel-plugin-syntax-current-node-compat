@@ -13,7 +13,7 @@
     "url": "https://github.com/MirKml"
   },
   "scripts": {
-    "test": "node ./test/index.js"
+    "test": "node ./tests/returned-plugins.js"
   },
   "dependencies": {
     "@babel/helper-plugin-utils": "^7.0.0 || ^8.0.0-0"
@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
-    "@babel/helper-plugin-utils": "^7.29.7"
+    "@babel/helper-plugin-utils": "^7.29.7",
+    "@types/node": "^24.13.6"
   },
   "license": "MIT"
 }

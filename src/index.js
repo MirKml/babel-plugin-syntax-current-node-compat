@@ -68,7 +68,7 @@ const babel7OnlyPlugins = getPluginsList({
 // synchronously. For this reason, we cannot detect import.meta support at
 // runtime. It is supported starting from 10.4, so we can check the version.
 const major = parseInt(process.versions.node, 10);
-const minor = parseInt(process.versions.node.match(/^\d+\.(\d+)/)[1], 10);
+const minor = parseInt(process.versions.node.split(".")[1], 10);
 if (major > 10 || (major === 10 && minor >= 4)) {
   babel7OnlyPlugins.push("syntax-import-meta");
 }
