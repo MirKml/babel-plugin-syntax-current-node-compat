@@ -1,0 +1,12 @@
+{
+  "name": "babel-plugin-node-syntax-compat-test-8",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test returned-plugins.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^8.0.6",
+    "@babel/helper-plugin-utils": "^8.0.1"
+  }
+}

@@ -1,11 +1,14 @@
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
+const babel = require("@babel/core");
 const plugin = require("../src");
 
-test("missing version", () => {
+test("all parser plugins for Babel 7", () => {
+  assert.equal(babel.version, "7.29.7");
+
   const parserOpts = { plugins: [] };
   const pluginInstance = plugin({
-    version: "7.0.0",
+    version: babel.version,
     assertVersion() { },
   }, null, __dirname);
 

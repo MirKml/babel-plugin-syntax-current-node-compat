@@ -8,12 +8,12 @@ const sourceCode = `
 `;
 
 test("import attributes", () => {
-  // transform with our plugin
-  const result = babel.transformSync(sourceCode, {
-    plugins: [plugin],
-    configFile: false, // ignore external babel.config.js
-    babelrc: false     // ignore external .babelrc
-  });
+    // transform with our plugin
+    const result = babel.transformSync(sourceCode, {
+        plugins: [plugin],
+        configFile: false, // ignore external babel.config.js
+        babelrc: false     // ignore external .babelrc
+    });
 
-  assert.ok(result && typeof result.code === "string", "Transform doesn't return code");
+    assert.ok(result && typeof result.code === "string", "Transform doesn't return code");
 });
