@@ -23,8 +23,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
-    "@babel/helper-plugin-utils": "^7.29.7",
-    "@types/node": "^24.13.6"
+    "@babel/helper-plugin-utils": "^7.29.7"
   },
   "license": "MIT"
 }
