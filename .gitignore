@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log*
+
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*~

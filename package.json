@@ -1,0 +1,29 @@
+{
+  "name": "babel-plugin-node-syntax-compat",
+  "version": "1.0.0",
+  "description": "The Babel syntax plugin same as babel-preset-current-node-syntax, but with clean and fixed dependencies for usage in both Babel 7 or Babel 8.",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MirKml"
+  },
+  "author": {
+    "name": "Miroslav Kubelík",
+    "url": "https://github.com/MirKml"
+  },
+  "scripts": {
+    "test": "node ./test/index.js"
+  },
+  "dependencies": {
+    "@babel/helper-plugin-utils": "^7.0.0 || ^8.0.0-0"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.0.0 || ^8.0.0-0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/helper-plugin-utils": "^7.29.7"
+  },
+  "license": "MIT"
+}
