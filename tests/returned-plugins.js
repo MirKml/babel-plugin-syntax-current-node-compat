@@ -28,5 +28,6 @@ test("missing version", () => {
     "classStaticBlock",
     "importMeta",
     "topLevelAwait",
+    "importAttributes",
   ]);
 });

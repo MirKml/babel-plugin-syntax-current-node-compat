@@ -66,6 +66,10 @@ function getParserOptsPlugins(syntaxPluginNames) {
                 parserPlugins.push("topLevelAwait");
                 break;
 
+            case "import-attributes":
+                parserPlugins.push("importAttributes");
+                break;
+
             default:
                 throw new Error(`Unknown syntax plugin: ${syntaxPluginName}`);
         }
