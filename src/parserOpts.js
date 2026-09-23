@@ -6,70 +6,71 @@ function getParserOptsPlugins(syntaxPluginNames) {
     /**
      * @type {string[]}
      */
-    const plugins = [];
+    const parserPlugins = [];
 
     for (const syntaxPluginName of syntaxPluginNames) {
         switch (syntaxPluginName) {
             case "object-rest-spread":
-                plugins.push("objectRestSpread");
+                parserPlugins.push("objectRestSpread");
                 break;
 
             case "async-generators":
-                plugins.push("asyncGenerators");
+                parserPlugins.push("asyncGenerators");
                 break;
 
             case "optional-catch-binding":
-                plugins.push("optionalCatchBinding");
+                parserPlugins.push("optionalCatchBinding");
                 break;
 
             case "json-strings":
-                plugins.push("jsonStrings");
+                parserPlugins.push("jsonStrings");
                 break;
 
             case "bigint":
-                plugins.push("bigInt");
+                parserPlugins.push("bigInt");
                 break;
 
             case "optional-chaining":
-                plugins.push("optionalChaining");
+                parserPlugins.push("optionalChaining");
                 break;
 
             case "nullish-coalescing-operator":
-                plugins.push("nullishCoalescingOperator");
+                parserPlugins.push("nullishCoalescingOperator");
                 break;
 
             case "numeric-separator":
-                plugins.push("numericSeparator");
+                parserPlugins.push("numericSeparator");
                 break;
 
             case "logical-assignment-operators":
-                plugins.push("logicalAssignment");
+                parserPlugins.push("logicalAssignment");
                 break;
 
             case "class-properties":
-                plugins.push("classProperties", "classPrivateProperties", "classPrivateMethods");
+                parserPlugins.push("classProperties", "classPrivateProperties", "classPrivateMethods");
                 break;
 
             case "private-property-in-object":
-                plugins.push("privateIn");
+                parserPlugins.push("privateIn");
                 break;
 
             case "class-static-block":
-                plugins.push("classStaticBlock");
+                parserPlugins.push("classStaticBlock");
                 break;
 
             case "syntax-import-meta":
-                plugins.push("importMeta");
+                parserPlugins.push("importMeta");
                 break;
 
             case "syntax-top-level-await":
-                plugins.push("topLevelAwait");
+                parserPlugins.push("topLevelAwait");
                 break;
 
             default:
+                throw new Error(`Unknown syntax plugin: ${syntaxPluginName}`);
         }
     }
-    return plugins;
+    return parserPlugins;
 }
 
 module.exports = {
