@@ -12,9 +12,21 @@ test("missing version", () => {
   pluginInstance.manipulateOptions({}, parserOpts);
 
   assert.deepEqual(parserOpts.plugins, [
+    "objectRestSpread",
+    "asyncGenerators",
+    "optionalCatchBinding",
+    "jsonStrings",
+    "bigInt",
+    "optionalChaining",
+    "nullishCoalescingOperator",
+    "numericSeparator",
+    "logicalAssignment",
     "classProperties",
     "classPrivateProperties",
     "classPrivateMethods",
     "privateIn",
+    "classStaticBlock",
+    "importMeta",
+    "topLevelAwait",
   ]);
 });
