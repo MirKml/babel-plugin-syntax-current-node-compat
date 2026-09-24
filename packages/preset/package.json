@@ -2,6 +2,9 @@
   "name": "babel-preset-node-syntax-compat",
   "main": "index.js",
   "type": "commonjs",
+  "files": [
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/MirKml/babel-plugin-syntax-current-node-compat.git"
