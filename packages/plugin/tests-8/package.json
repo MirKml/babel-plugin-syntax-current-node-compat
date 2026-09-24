@@ -1,9 +1,9 @@
 {
-  "name": "babel-plugin-node-syntax-compat-test-8",
+  "name": "babel-plugin-current-node-syntax-compat-test-8",
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "test": "node --test returned-plugins.js"
+    "test": "node --test returned-parser-plugins.js"
   },
   "devDependencies": {
     "@babel/core": "^8.0.6",

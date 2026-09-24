@@ -3,7 +3,7 @@ const assert = require("node:assert/strict");
 const babel = require("@babel/core");
 const plugin = require("../src");
 
-test("all parser plugins for Babel 7", () => {
+test("all parser opts plugins for Babel 7", () => {
   assert.equal(babel.version, "7.29.7");
 
   const parserOpts = { plugins: [] };

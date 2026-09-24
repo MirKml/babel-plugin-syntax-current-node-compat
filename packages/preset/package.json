@@ -1,0 +1,18 @@
+{
+  "name": "babel-preset-node-syntax-compat",
+  "main": "index.js",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MirKml/babel-plugin-syntax-current-node-compat.git"
+  },
+  "scripts": {
+    "test": "node --test tests/*.js"
+  },
+  "dependencies": {
+    "babel-plugin-current-node-syntax-compat": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.0.0 || ^8.0.0-0"
+  }
+}
