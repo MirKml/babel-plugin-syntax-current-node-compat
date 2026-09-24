@@ -90,7 +90,7 @@ module.exports = declare(api => {
   api.assertVersion("^7.0.0 || ^8.0.0-0");
 
   return {
-    name: "syntax-plugin-compat",
+    name: "syntax-current-node-compat",
     visitor: {},
 
     manipulateOptions(opts, parserOpts) {
