@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-current-node-syntax-compat",
-  "version": "1.0.0-rc.0",
+  "version": "1.0.0-rc.1",
   "description": "Optional preset for babel-plugin-node-syntax-compat, useful as drop-in replacement for babel-preset-current-node-syntax",
   "main": "index.js",
   "type": "commonjs",
