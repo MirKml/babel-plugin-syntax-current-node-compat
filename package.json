@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
+    "test": "npm test --workspaces"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7"
