@@ -1,4 +1,4 @@
-# babel current-node-syntax compatibility plugin, preset
+# babel-plugin-current-node-syntax-compat
 
 Designed as a clean Babel 8 compatibility replacement for [babel-preset-current-node-syntax](https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax)`
 with compatibility for both **Babel 7** and **Babel 8**, avoiding dozens of separate legacy syntax plugin dependencies.
@@ -7,36 +7,13 @@ as peer dependency with other packages e.g. Jest — [this issue](https://github
 
 ---
 
-## Packages
-
-This repository contains two packages:
-
-* [babel-plugin-current-node-syntax-compat](packages/plugin/package.json) - Babel plugin that enables parser plugins supported by the running Node.js version.
-* [babel-preset-current-node-syntax-compat](packages/preset/package.json) - Drop-in preset wrapper around the plugin for configurations expecting a preset.
-
----
-
 ## Installation
-
-Install either the preset (recommended if migrating from `babel-preset-current-node-syntax`) or the plugin:
-
-### Preset
 
 ```sh
 npm install --save-dev babel-preset-current-node-syntax-compat
 ```
 
-### Plugin
-
-```sh
-npm install --save-dev babel-plugin-current-node-syntax-compat
-```
-
----
-
 ## Usage
-
-### As a Preset
 
 In your `babel.config.json` (or `.babelrc`):
 
@@ -45,16 +22,6 @@ In your `babel.config.json` (or `.babelrc`):
   "presets": ["babel-preset-current-node-syntax-compat"]
 }
 
-```
-
-### As a Plugin
-
-In your `babel.config.json` (or `.babelrc`):
-
-```json
-{
-  "plugins": ["babel-plugin-current-node-syntax-compat"]
-}
 ```
 
 ## License
