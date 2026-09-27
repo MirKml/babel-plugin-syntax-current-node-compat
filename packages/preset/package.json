@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/MirKml/babel-plugin-syntax-current-node-compat.git"
+    "url": "git+https://github.com/MirKml/babel-plugin-syntax-current-node-compat.git"
   },
   "scripts": {
     "test": "node --test tests/*.js"
