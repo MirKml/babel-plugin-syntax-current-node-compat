@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-current-node-syntax-compat",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.0",
   "description": "The Babel syntax plugin same as babel-preset-current-node-syntax, but with clean and fixed dependencies for usage in both Babel 7 or Babel 8.",
   "main": "src/index.js",
   "type": "commonjs",
