@@ -1,9 +1,9 @@
 # babel-preset-current-node-syntax-compat
 
-Designed as a clean Babel 8 compatibility replacement for [babel-preset-current-node-syntax](https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax)`
+Designed as a clean Babel 8 compatibility replacement for [babel-preset-current-node-syntax](https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax)
 with compatibility for both **Babel 7** and **Babel 8**, avoiding dozens of separate legacy syntax plugin dependencies.
 It solves peer dependency problems described in [this issue](https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax/issues/10), which lead to a problematic or even impossible installation of Babel 8
-as peer dependency with other packages e.g. Jest — [this issue](https://github.com/jestjs/jest/issues/15152#issuecomment-5470861058).
+as a peer dependency with other packages (e.g., Jest — see [this issue](https://github.com/jestjs/jest/issues/15152#issuecomment-5470861058)).
 
 ---
 
@@ -21,13 +21,13 @@ In your `babel.config.json` (or `.babelrc`):
 {
   "presets": ["babel-preset-current-node-syntax-compat"]
 }
-
 ```
 
-## Upgrade to Babel 8 with Jest with this preset
-I will describe my migration with the npm => 11.19.0 bundled with node.js 24 LTS. Jest 30.5.2.
-Migration to Babel 8 generally isn't straight forward, event with the simple project with just babel itself.
-Just changing the babel dev dependencies ins't enough, npm install throws EROSLVE errors for peer dependency conflict on @babel/core itself, like this
+## Upgrading to Babel 8 with Jest using this preset
+
+This section describes a migration using npm >= 11.19.0 (bundled with Node.js 24 LTS) and Jest 30.5.2.
+Migrating to Babel 8 generally isn't straightforward, even for a simple project that only uses Babel.
+Just changing the Babel devDependencies isn't enough; `npm install` throws `ERESOLVE` errors due to peer dependency conflicts on `@babel/core` itself, like this:
 
 ```
 npm error code ERESOLVE
@@ -48,9 +48,9 @@ npm error   node_modules/@babel/cli
 npm error     dev @babel/cli@"^8.0.6" from the root project
 ```
 
-So it's necessary to manually adjust lock file, to push npm itself to solve dependencies itself.
+Therefore, it is necessary to manually adjust `package-lock.json` to help npm resolve the dependencies properly.
 
-1. Change your babel dev dependencies to version 8, add override for problematic preset `"babel-preset-current-node-syntax` with our new preset
+1. Update your Babel devDependencies to version 8 and add an override replacing the problematic preset `babel-preset-current-node-syntax` with this preset:
 ```json
 {
  "devDependencies": {
@@ -61,12 +61,12 @@ So it's necessary to manually adjust lock file, to push npm itself to solve depe
     "@babel/preset-typescript": "^8.0.1"
  },
  "overrides": {
-    "babel-preset-current-node-syntax": "npm:babel-preset-current-node-syntax-compat",
+    "babel-preset-current-node-syntax": "npm:babel-preset-current-node-syntax-compat"
   }
 }
 ```
 
-2. Remove the @babel/core part from the lock-file - package-lock.json
+2. Remove the `@babel/core` block from `package-lock.json`:
 
 ```
 diff --git a/package-lock.json b/package-lock.json
@@ -110,24 +110,25 @@ index c07507f2eb..7c019cac2b 100644
      "node_modules/@babel/generator": {
 ```
 
-3. Run npm install
-Npm prints lots of warnings, but finishes with many changes like `added 259 packages, removed 17 packages, changed 99 packages`.
+3. Run `npm install`:
+npm will print multiple warnings, but it should complete with output similar to: `added 259 packages, removed 17 packages, changed 99 packages`.
 
-4. Mostly babel/core has still the problems, try to use `npm ls -a` if there are some errors. I get the `npm error invalid: @babel/core@8.0.6`. Check the errors with the `npm ls @babel/core`.
-I get the problem with babel-preset-jest, @babel/plugin-syntax-jsx, @babel/plugin-syntax-typescript under jest-snapshot tree. Errors like
+4. Often `@babel/core` may still report conflicts. Run `npm ls -a` to check for errors. If you see `npm error invalid: @babel/core@8.0.6`, inspect it by running `npm ls @babel/core`.
+You may encounter conflicts involving `babel-preset-jest`, `@babel/plugin-syntax-jsx`, and `@babel/plugin-syntax-typescript` under the `jest-snapshot` dependency tree:
 
 ```
     @babel/core@8.0.6 deduped invalid: "^7.0.0-0" from node_modules/@babel/plugin-syntax-jsx, "^7.0.0-0" from node_modules/@babel/plugin-syntax-typescript
     ...
 ```
-These packages are still from babel 7, jest depends on these internally. These needs to be installed on own jest-snapshot node_modules subtree.
-Now I checked the package-lock.json, how are the problematic packages presented, I saw that these old packages are on main level.
+
+These packages are from Babel 7, which Jest still depends on internally. They need to be installed in `jest-snapshot`'s own `node_modules` subtree rather than hoisted to the root level.
+When checking `package-lock.json`, you will likely notice that these older packages are hoisted at the root level:
 
 package-lock.json
-```
+```json
     "node_modules/@babel/plugin-syntax-jsx": {
       "version": "7.29.7",
-      "resolved": "...https://registry.npmjs.org/@babel/plugin-syntax-jsx/-/plugin-syntax-jsx-7.29.7.tgz",
+      "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-jsx/-/plugin-syntax-jsx-7.29.7.tgz",
       "integrity": "sha512-TSu8+mHCoEaaCDEZ0I3+6mvTBYR4PCxQwf2z9/r5Tbztv6NaLR3B9thGTTxX2WGuGHJqRiAbKPeGTJ5XWXVg6A==",
       "license": "MIT",
       "dependencies": {
@@ -142,10 +143,10 @@ package-lock.json
     }
 ```
 
-So npm doesn't solve these correctly under . I remove these problematic old babel 7 package references from package-lock file - @babel/plugin-syntax-jsx@7.29.7, @babel/plugin-syntax-typescript@7.29.7 - parts from lock file.
+Because npm does not resolve these properly under `jest-snapshot`'s nested tree automatically, remove these older Babel 7 package blocks (e.g., `"node_modules/@babel/plugin-syntax-jsx"` and `"node_modules/@babel/plugin-syntax-typescript"`) from `package-lock.json`.
 
-5. Run npm install again, and ten all it's fine, no npm errors in `npm ls @babel/core`, `npm ls -a`. Some plugins are correctly installed in two versions - one for babel 7, one for babel 8 in own subtrees.
-E.g. @babel/plugin-syntax-typescript
+5. Run `npm install` again. Everything should now succeed cleanly without any errors from `npm ls @babel/core` or `npm ls -a`. Certain plugins will be correctly installed in two versions-one for Babel 7 and one for Babel 8-in their respective subtrees.
+For example, running `npm ls @babel/plugin-syntax-typescript`:
 
 ```
  npm ls @babel/plugin-syntax-typescript
@@ -159,7 +160,8 @@ E.g. @babel/plugin-syntax-typescript
       └── @babel/plugin-syntax-typescript@7.29.7
 ```
 
-It's finished. Jest still uses babel 7 packages for some internal processing, but user code transformation goes through babel 8.
+The migration is now complete. Jest continues to use Babel 7 packages internally where required, while your application code transformation runs through Babel 8.
+
 ## License
 
-[MIT](packages/plugin/package.json)
+[MIT](../plugin/package.json)
