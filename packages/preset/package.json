@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-current-node-syntax-compat",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0",
   "description": "Optional preset for babel-plugin-node-syntax-compat, useful as drop-in replacement for babel-preset-current-node-syntax",
   "main": "index.js",
   "type": "commonjs",
@@ -15,7 +15,7 @@
     "test": "node --test tests/*.js"
   },
   "dependencies": {
-    "babel-plugin-current-node-syntax-compat": "^1.0.0-0"
+    "babel-plugin-current-node-syntax-compat": "^1.0.0"
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0 || ^8.0.0-0"
