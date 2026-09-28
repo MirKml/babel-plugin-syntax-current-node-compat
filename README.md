@@ -11,8 +11,8 @@ as a peer dependency with other packages (e.g., Jest — see [this issue](https:
 
 This repository contains two packages:
 
-* [babel-plugin-current-node-syntax-compat](packages/plugin/package.json) - Babel plugin that enables parser plugins supported by the running Node.js version.
-* [babel-preset-current-node-syntax-compat](packages/preset/package.json) - Drop-in preset wrapper around the plugin for configurations expecting a preset.
+* [babel-plugin-current-node-syntax-compat](packages/plugin/README.md) - Babel plugin that enables parser plugins supported by the running Node.js version.
+* [babel-preset-current-node-syntax-compat](packages/preset/README.md) - Drop-in preset wrapper around the plugin for configurations expecting a preset.
 
 ---
 
