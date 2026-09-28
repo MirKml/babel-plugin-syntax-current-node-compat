@@ -26,7 +26,9 @@ In your `babel.config.json` (or `.babelrc`):
 ## Upgrading to Babel 8 with Jest using this preset
 
 This section describes a migration using npm >= 11.19.0 (bundled with Node.js 24 LTS) and Jest 30.5.2.
-Migrating to Babel 8 generally isn't straightforward, even for a simple project that only uses Babel.
+It describes only package upgrading. Own Babel 8 migration is out of scope this guide, see the [original Babel 8 migration guide](https://babeljs.io/docs/v8-migration).
+
+Migrating Babel packages to Babel 8 generally isn't straightforward, even for a simple project that only uses Babel.
 Just changing the Babel devDependencies isn't enough; `npm install` throws `ERESOLVE` errors due to peer dependency conflicts on `@babel/core` itself, like this:
 
 ```
@@ -161,6 +163,9 @@ For example, running `npm ls @babel/plugin-syntax-typescript`:
 ```
 
 The migration is now complete. Jest continues to use Babel 7 packages internally where required, while your application code transformation runs through Babel 8.
+
+Finally you need to upgrade necessary Babel configuration, which is used for your Jest tests, transformation etc.
+It's beyond the scope of this guide, see original [migration to Babel 8](https://babeljs.io/docs/v8-migration) guide.
 
 ## License
 
