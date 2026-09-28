@@ -5,6 +5,10 @@ with compatibility for both **Babel 7** and **Babel 8**, avoiding dozens of sepa
 It solves peer dependency problems described in [this issue](https://github.com/nicolo-ribaudo/babel-preset-current-node-syntax/issues/10), which lead to a problematic or even impossible installation of Babel 8
 as a peer dependency with other packages (e.g., Jest — see [this issue](https://github.com/jestjs/jest/issues/15152#issuecomment-5470861058)).
 
+**Important**: This package is intended only for progressive migration scenarios, where both Babel 7 and Babel 8 need to work simultaneously. If you are only using Babel 8, you don't not need these (and original preset) syntax packages.
+When you switch to using only Babel 8, you can safely remove this package, as Babel 8 natively supports the latest Node.js syntax.
+
+When you use [deprecatedAssertSyntax](https://babeljs.io/docs/babel-plugin-syntax-import-attributes#deprecatedassertsyntax), this isn't supported by this plugin.
 ---
 
 ## Packages
