@@ -35,7 +35,7 @@ Just changing the Babel devDependencies isn't enough; `npm install` throws `ERES
 npm error code ERESOLVE
 npm error ERESOLVE could not resolve
 npm error
-npm error While resolving: raltra-frontend@1.0.0
+npm error While resolving: my-app@1.0.0
 npm error Found: @babel/cli@7.29.7
 npm error node_modules/@babel/cli
 npm error   dev @babel/cli@"^8.0.6" from the root project
